@@ -1,0 +1,9 @@
+<h1>Novo livro</h1>
+
+<%= form_with model: @book do |f| %>
+  <div><%= f.text_field :title, placeholder: "Título" %></div>
+  <div><%= f.text_field :author, placeholder: "Autor" %></div>
+  <div><%= f.number_field :published_year, placeholder: "Ano de publicação" %></div>
+
+  <%= f.submit "Cadastrar" %>
+<% end %>

@@ -26,12 +26,16 @@
   <body>
   <header>
   <% if current_user %>
-    Olá, <%= current_user.name %> |
-    <%= button_to "Logout", session_path, method: :delete %>
-  <% else %>
-    <%= link_to "Criar conta", new_user_path %> |
-    <%= link_to "Login", new_session_path %>
-  <% end %>
+  <%= link_to "Cadastrar livro", new_book_path %> |
+  <%= link_to "Ver livros", books_path %> |
+  Olá, <%= current_user.name %> |
+  <%= button_to "Logout", session_path, method: :delete %>
+<% else %>
+  <%= link_to "Ver livros", books_path %> |
+  <%= link_to "Criar conta", new_user_path %> |
+  <%= link_to "Login", new_session_path %>
+<% end %>
+
 </header>
 
 <hr>
