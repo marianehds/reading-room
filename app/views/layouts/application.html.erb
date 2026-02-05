@@ -24,6 +24,26 @@
   </head>
 
   <body>
+  <header>
+  <% if current_user %>
+    Olá, <%= current_user.name %> |
+    <%= button_to "Logout", session_path, method: :delete %>
+  <% else %>
+    <%= link_to "Criar conta", new_user_path %> |
+    <%= link_to "Login", new_session_path %>
+  <% end %>
+</header>
+
+<hr>
+<% if flash[:notice] %>
+  <p style="color: green;"><%= flash[:notice] %></p>
+<% end %>
+
+<% if flash[:alert] %>
+  <p style="color: red;"><%= flash[:alert] %></p>
+<% end %>
+
+
     <%= yield %>
   </body>
 </html>

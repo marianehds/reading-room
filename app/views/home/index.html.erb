@@ -1,0 +1,7 @@
+<h1>Reading Room</h1>
+
+<% if current_user %>
+  <p>Logada como <strong><%= current_user.name %></strong></p>
+<% else %>
+  <p>Você não está logada</p>
+<% end %>

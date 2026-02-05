@@ -1,0 +1,9 @@
+<h1>Criar conta</h1>
+
+<%= form_with model: @user do |f| %>
+  <div><%= f.text_field :name, placeholder: "Nome" %></div>
+  <div><%= f.email_field :email, placeholder: "Email" %></div>
+  <div><%= f.password_field :password, placeholder: "Senha" %></div>
+  <div><%= f.password_field :password_confirmation, placeholder: "Confirmar senha" %></div>
+  <div><%= f.submit "Criar conta" %></div>
+<% end %>
