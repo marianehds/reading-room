@@ -1,9 +1,26 @@
 <h1>Novo livro</h1>
 
-<%= form_with model: @book do |f| %>
-  <div><%= f.text_field :title, placeholder: "Título" %></div>
-  <div><%= f.text_field :author, placeholder: "Autor" %></div>
-  <div><%= f.number_field :published_year, placeholder: "Ano de publicação" %></div>
+<div data-controller="book-search">
+  <div style="margin-bottom: 12px;">
+    <input
+      type="text"
+      placeholder="Digite um título para buscar..."
+      data-book-search-target="query"
+    />
+    <button type="button" data-action="click->book-search#search">
+      Buscar
+    </button>
+  </div>
 
-  <%= f.submit "Cadastrar" %>
-<% end %>
+  <div data-book-search-target="results"></div>
+
+  <hr style="margin: 16px 0;" />
+
+  <%= form_with model: @book do |f| %>
+    <div><%= f.text_field :title, placeholder: "Título", data: { book_search_target: "title" } %></div>
+    <div><%= f.text_field :author, placeholder: "Autor", data: { book_search_target: "author" } %></div>
+    <div><%= f.number_field :published_year, placeholder: "Ano", data: { book_search_target: "year" } %></div>
+
+    <%= f.submit "Cadastrar" %>
+  <% end %>
+</div>

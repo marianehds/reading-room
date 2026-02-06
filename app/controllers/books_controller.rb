@@ -18,6 +18,14 @@ class BooksController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+  
+  def search
+    title = params[:title]
+    results = OpenLibraryClient.new.search_by_title(title, limit: 10)
+  
+    render json: { results: results }
+  end
+  
 
   private
 
