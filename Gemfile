@@ -67,3 +67,5 @@ end
 
 gem "httparty"
 
+
+gem "tailwindcss-rails", "~> 4.4"
