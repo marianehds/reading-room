@@ -1,9 +1,27 @@
-<h1>Livros cadastrados</h1>
+<h1>Livros lidos</h1>
 
-<% @books.each do |book| %>
-  <p>
-    <strong><%= book.title %></strong><br>
-    Autor: <%= book.author %><br>
-    Cadastrado por: <%= book.user.name %>
-  </p>
+<% if @books.blank? %>
+  <p>Nenhum livro cadastrado ainda.</p>
+<% else %>
+  <% @books.each do |book| %>
+    <div style="padding: 12px 0; border-bottom: 1px solid #ddd;">
+      <%= link_to book_path(book),
+                  data: { turbo_frame: "modal" },
+                  style: "text-decoration:none; color: inherit;" do %>
+
+        <p style="margin: 0;">
+          <strong><%= book.title %></strong>
+          <% if book.published_year.present? %>
+            (<%= book.published_year %>)
+          <% end %>
+        </p>
+
+        <p style="margin: 6px 0;">Autor: <%= book.author %></p>
+
+        <p style="margin: 6px 0; color: #666;">
+          Cadastrado por: <%= book.user.name %>
+        </p>
+      <% end %>
+    </div>
+  <% end %>
 <% end %>

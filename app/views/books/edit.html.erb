@@ -1,0 +1,18 @@
+<turbo-frame id="modal">
+  <dialog data-controller="modal" data-action="click->modal#backdropClose">
+    <div style="min-width: 320px; max-width: 520px;">
+      <div style="display:flex; justify-content: space-between; align-items:center;">
+        <h2 style="margin:0;">Editar livro</h2>
+        <button type="button" data-action="modal#close" aria-label="Fechar">✕</button>
+      </div>
+
+      <%= form_with model: @book do |f| %>
+        <div><%= f.text_field :title, placeholder: "Título" %></div>
+        <div><%= f.text_field :author, placeholder: "Autor" %></div>
+        <div><%= f.number_field :published_year, placeholder: "Ano" %></div>
+
+        <%= f.submit "Salvar alterações" %>
+      <% end %>
+    </div>
+  </dialog>
+</turbo-frame>
