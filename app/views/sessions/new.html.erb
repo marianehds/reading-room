@@ -1,7 +1,34 @@
-<h1>Login</h1>
+<div class="max-w-md mx-auto mt-16">
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+    <h1 class="text-2xl font-semibold text-primary mb-6 text-center">
+      Login
+    </h1>
 
-<%= form_with url: session_path do %>
-  <div><%= email_field_tag :email, nil, placeholder: "Email" %></div>
-  <div><%= password_field_tag :password, nil, placeholder: "Senha" %></div>
-  <div><%= submit_tag "Entrar" %></div>
-<% end %>
+    <%= form_with url: session_path, class: "space-y-4" do %>
+      <div>
+        <label class="block text-sm font-medium text-primary">
+          Email
+        </label>
+        <%= email_field_tag :email,
+                            nil,
+                            placeholder: "seu@email.com",
+                            class: "mt-1 w-full rounded-xl border-gray-200 focus:border-secondary focus:ring-secondary p-2" %>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-primary">
+          Senha
+        </label>
+        <%= password_field_tag :password,
+                               nil,
+                               placeholder: "••••••••",
+                               class: "mt-1 w-full rounded-xl border-gray-200 focus:border-secondary focus:ring-secondary p-2" %>
+      </div>
+
+      <div class="pt-2">
+        <%= submit_tag "Entrar",
+                       class: "w-full rounded-xl px-4 py-2 text-sm font-medium bg-secondary text-white hover:opacity-90 transition" %>
+      </div>
+    <% end %>
+  </div>
+</div>

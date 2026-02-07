@@ -6,18 +6,18 @@ export default class extends Controller {
   async search() {
     const q = this.queryTarget.value.trim();
     if (!q) {
-      this.resultsTarget.innerHTML = "<p>Digite um título para buscar.</p>";
+      this.resultsTarget.innerHTML = '<p class="text-gray-500">Digite um título para buscar.</p>';
       return;
     }
 
-    this.resultsTarget.innerHTML = "<p>Buscando...</p>";
+    this.resultsTarget.innerHTML = '<p class="text-gray-500">Buscando...</p>';
 
     const resp = await fetch(`/books/search?title=${encodeURIComponent(q)}`, {
       headers: { Accept: "application/json" },
     });
 
     if (!resp.ok) {
-      this.resultsTarget.innerHTML = "<p>Erro ao buscar livros.</p>";
+      this.resultsTarget.innerHTML = '<p class="text-red-600">Erro ao buscar livros.</p>';
       return;
     }
 
@@ -29,7 +29,7 @@ export default class extends Controller {
 
   renderResults(results) {
     if (results.length === 0) {
-      this.resultsTarget.innerHTML = "<p>Nenhum resultado.</p>";
+      this.resultsTarget.innerHTML = '<p class="text-gray-500">Nenhum resultado.</p>';
       return;
     }
 
@@ -42,20 +42,20 @@ export default class extends Controller {
         return `
           <button
             type="button"
+            class="block w-full text-left rounded-lg border border-gray-200 bg-white px-3 py-2.5 text-sm hover:bg-gray-50 hover:border-primary/30 transition"
             data-action="click->book-search#select"
             data-title="${title}"
             data-author="${author}"
             data-year="${year}"
-            style="display:block; width:100%; text-align:left; margin:8px 0; padding:10px;"
           >
-            <strong>${title}</strong><br/>
-            <small>${author}${year ? " • " + year : ""}</small>
+            <span class="font-medium text-primary">${title}</span><br/>
+            <span class="text-gray-500 text-xs">${author}${year ? " • " + year : ""}</span>
           </button>
         `;
       })
       .join("");
 
-    this.resultsTarget.innerHTML = html;
+    this.resultsTarget.innerHTML = `<div class="space-y-2">${html}</div>`;
   }
 
   select(event) {
@@ -65,7 +65,7 @@ export default class extends Controller {
     this.authorTarget.value = btn.dataset.author || "";
     this.yearTarget.value = btn.dataset.year || "";
 
-    this.resultsTarget.innerHTML = `<p>Selecionado: <strong>${this.escape(
+    this.resultsTarget.innerHTML = `<p class="text-gray-600">Selecionado: <strong class="text-primary">${this.escape(
       btn.dataset.title || ""
     )}</strong></p>`;
   }

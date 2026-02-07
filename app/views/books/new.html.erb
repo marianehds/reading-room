@@ -1,26 +1,66 @@
-<h1>Novo livro</h1>
+<div class="max-w-xl mx-auto">
+  <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+    <h1 class="text-2xl font-semibold text-primary mb-6">
+      Novo livro
+    </h1>
 
-<div data-controller="book-search">
-  <div style="margin-bottom: 12px;">
-    <input
-      type="text"
-      placeholder="Digite um título para buscar..."
-      data-book-search-target="query"
-    />
-    <button type="button" data-action="click->book-search#search">
-      Buscar
-    </button>
+    <div data-controller="book-search" class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-primary mb-1">Buscar livro</label>
+        <div class="flex gap-2">
+          <input
+            type="text"
+            placeholder="Digite um título para buscar..."
+            class="flex-1 rounded-xl border border-gray-200 px-3 py-2 text-sm focus:border-primary focus:ring-1 focus:ring-primary"
+            data-book-search-target="query"
+          />
+          <button
+            type="button"
+            class="rounded-xl px-4 py-2 text-sm font-medium bg-primary text-white hover:opacity-90 transition"
+            data-action="click->book-search#search"
+          >
+            Buscar
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="min-h-[2rem] rounded-xl border border-gray-100 bg-gray-50 p-3 text-sm text-gray-600"
+        data-book-search-target="results"
+      ></div>
+
+      <hr class="border-gray-100" />
+
+      <%= form_with model: @book, class: "space-y-4" do |f| %>
+        <div>
+          <label class="block text-sm font-medium text-primary mb-1">Título</label>
+          <%= f.text_field :title,
+                            placeholder: "Título",
+                            class: "w-full rounded-xl border border-gray-200 px-3 py-2 focus:border-primary focus:ring-1 focus:ring-primary",
+                            data: { book_search_target: "title" } %>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-primary mb-1">Autor</label>
+          <%= f.text_field :author,
+                            placeholder: "Autor",
+                            class: "w-full rounded-xl border border-gray-200 px-3 py-2 focus:border-primary focus:ring-1 focus:ring-primary",
+                            data: { book_search_target: "author" } %>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-primary mb-1">Ano</label>
+          <%= f.number_field :published_year,
+                              placeholder: "Ano",
+                              class: "w-full rounded-xl border border-gray-200 px-3 py-2 focus:border-primary focus:ring-1 focus:ring-primary",
+                              data: { book_search_target: "year" } %>
+        </div>
+
+        <div class="pt-2">
+          <%= f.submit "Cadastrar",
+                       class: "w-full rounded-xl px-4 py-2 text-sm font-medium bg-primary text-white hover:opacity-90 transition" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-
-  <div data-book-search-target="results"></div>
-
-  <hr style="margin: 16px 0;" />
-
-  <%= form_with model: @book do |f| %>
-    <div><%= f.text_field :title, placeholder: "Título", data: { book_search_target: "title" } %></div>
-    <div><%= f.text_field :author, placeholder: "Autor", data: { book_search_target: "author" } %></div>
-    <div><%= f.number_field :published_year, placeholder: "Ano", data: { book_search_target: "year" } %></div>
-
-    <%= f.submit "Cadastrar" %>
-  <% end %>
 </div>
