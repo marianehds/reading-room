@@ -22,17 +22,17 @@
             <div class="space-y-3">
               <div>
                 <label class="block text-sm font-medium text-primary">Título</label>
-                <%= f.text_field :title, class: "mt-1 w-full rounded-xl border-gray-200 focus:border-secondary focus:ring-secondary" %>
+                <%= f.text_field :title, required: true, class: "mt-1 w-full rounded-xl border border-gray-200 focus:border-secondary focus:ring-secondary px-3 py-2" %>
               </div>
 
               <div>
                 <label class="block text-sm font-medium text-primary">Autor</label>
-                <%= f.text_field :author, class: "mt-1 w-full rounded-xl border-gray-200 focus:border-secondary focus:ring-secondary" %>
+                <%= f.text_field :author, required: true, class: "mt-1 w-full rounded-xl border border-gray-200 focus:border-secondary focus:ring-secondary px-3 py-2" %>
               </div>
 
               <div>
                 <label class="block text-sm font-medium text-primary">Ano</label>
-                <%= f.number_field :published_year, class: "mt-1 w-full rounded-xl border-gray-200 focus:border-secondary focus:ring-secondary" %>
+                <%= f.number_field :published_year, required: true, min: 1000, max: Date.current.year, class: "mt-1 w-full rounded-xl border border-gray-200 focus:border-secondary focus:ring-secondary px-3 py-2" %>
               </div>
             </div>
 

@@ -36,6 +36,7 @@
           <label class="block text-sm font-medium text-primary mb-1">Título</label>
           <%= f.text_field :title,
                             placeholder: "Título",
+                            required: true,
                             class: "w-full rounded-xl border border-gray-200 px-3 py-2 focus:border-primary focus:ring-1 focus:ring-primary",
                             data: { book_search_target: "title" } %>
         </div>
@@ -44,6 +45,7 @@
           <label class="block text-sm font-medium text-primary mb-1">Autor</label>
           <%= f.text_field :author,
                             placeholder: "Autor",
+                            required: true,
                             class: "w-full rounded-xl border border-gray-200 px-3 py-2 focus:border-primary focus:ring-1 focus:ring-primary",
                             data: { book_search_target: "author" } %>
         </div>
@@ -51,9 +53,13 @@
         <div>
           <label class="block text-sm font-medium text-primary mb-1">Ano</label>
           <%= f.number_field :published_year,
-                              placeholder: "Ano",
-                              class: "w-full rounded-xl border border-gray-200 px-3 py-2 focus:border-primary focus:ring-1 focus:ring-primary",
-                              data: { book_search_target: "year" } %>
+                            placeholder: "Ano",
+                            required: true,
+                            min: 1000,
+                            max: Date.current.year,
+                            class: "w-full rounded-xl border border-gray-200 px-3 py-2 focus:border-primary focus:ring-1 focus:ring-primary",
+                            data: { book_search_target: "year" } %>
+        
         </div>
 
         <div class="pt-2">
