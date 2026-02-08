@@ -1,0 +1,17 @@
+# Uso: docker compose up --build
+# Aplicação em: http://localhost:3000
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:80"
+    environment:
+      RAILS_ENV: production
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
+    volumes:
+      - storage_data:/rails/storage
+    restart: unless-stopped
+
+volumes:
+  storage_data:
