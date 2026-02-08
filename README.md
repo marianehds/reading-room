@@ -59,19 +59,21 @@ Sugestões inadequadas ou incompletas foram ajustadas para o contexto do projeto
 
 Exemplo:
 
--A IA gerou a secret key no arquivo de docker compose na intenção de deixar exposta e commitar ela, alterei imediatamente adicionando a chave ao arquivo .env
+- A IA gerou a secret key no arquivo de docker compose na intenção de deixar exposta e commitar ela, alterei imediatamente adicionando a chave ao arquivo .env
 
--A IA sugeriu inicialmente o uso excessivo de lógica no frontend para controle de estado. Essa abordagem foi corrigida para utilizar Turbo Frames, mantendo a renderização no backend e reduzindo complexidade desnecessária no frontend.
+- A IA sugeriu inicialmente o uso excessivo de lógica no frontend para controle de estado. Essa abordagem foi corrigida para utilizar Turbo Frames, mantendo a renderização no backend e reduzindo complexidade desnecessária no frontend.
 
--A Ia adicionou book_search_controller.js na pasta errada de controllers de ruby e nao na pasta de js, corrigi movendo o arquivo para a pasta correta
+- A Ia adicionou book_search_controller.js na pasta errada de controllers de ruby e nao na pasta de js, corrigi movendo o arquivo para a pasta correta
 
--
 # 📌 Observações finais(Importante):
 Deixei a geração do .env de forma automática para facilitar a instalação para os avaliadores, compreendo que em um projeto real o dev deve gerar sua própria chave.
 
-O projeto evita o uso de scaffold, optando por generators pontuais e implementação manual para maior controle do fluxo
+## Validações básicas implementadas no projeto pensando em regras de negócio.
+- Não é permitido adicionar um ano menor que 1000 ou maior que o ano atual.
+- Não é permitido adicionar um livro sem titulo ou sem autor.
+- Não é permitido criar um cadastro sem email, nome ou senha.
+- Caso email e ou senha sejam inválidos não será avisado qual (norma de segurança).
 
-O foco foi clareza, simplicidade e aderência aos requisitos do teste
+O projeto evita o uso de scaffold, optando por generators pontuais e implementação manual para maior controle do fluxo.
 
-O código foi escrito visando fácil leitura e manutenção
-
+O foco foi clareza, simplicidade e aderência aos requisitos do teste.
