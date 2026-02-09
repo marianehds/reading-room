@@ -5,10 +5,20 @@ Aplicação web desenvolvida em Ruby on Rails para cadastro e exibição de livr
 Este projeto foi desenvolvido como parte de um teste técnico, com foco em boas práticas de arquitetura, clareza de código e experiência do usuário.
 
 ## Rodando o projeto
-Para subir o projeto abra o git bash na raiz do projeto e utilize o comando
+
+- Windows
+Para subir o projeto abra o git bash na raiz do projeto e utilize o comando:
  ```bash 
  ./start.sh
  ```
+
+- Linux
+Caso esteja utilizando linux será necessário dar permissão para o arquivo, utilize os comandos:
+ ```bash 
+ chmod +x start.sh 
+  ./start.sh
+ ```
+
  
  ## Pré-requisitos
  Docker/Docker compose
@@ -65,7 +75,7 @@ Exemplo:
 
 - A Ia adicionou book_search_controller.js na pasta errada de controllers de ruby e nao na pasta de js, corrigi movendo o arquivo para a pasta correta
 
-# 📌 Observações finais(Importante):
+# 📌 Observações finais (Importante):
 Deixei a geração do .env de forma automática para facilitar a instalação para os avaliadores, compreendo que em um projeto real o dev deve gerar sua própria chave.
 
 ## Validações básicas implementadas no projeto pensando em regras de negócio.
